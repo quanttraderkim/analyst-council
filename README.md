@@ -12,6 +12,7 @@
 - **자동 폴백 시스템**: API 실패 시 자동으로 백업 모델로 전환
 - **투명한 오류 처리**: API 실패 시에도 부분 결과 제공
 - **분석 히스토리**: 모든 분석 결과를 자동으로 저장
+- **웹 인터페이스**: Streamlit 기반 사용자 친화적 웹 애플리케이션
 
 ## 설치 및 실행
 
@@ -32,6 +33,17 @@ cp env.example .env
 ```
 
 ### 3. 실행
+
+#### 웹 애플리케이션 (권장)
+```bash
+# Streamlit 웹 앱 실행
+python3 run_app.py
+# 또는 직접 실행
+streamlit run app.py
+```
+브라우저에서 `http://localhost:8501` 접속
+
+#### CLI 실행
 ```bash
 python3 expert_council.py
 ```
@@ -41,6 +53,8 @@ python3 expert_council.py
 analyst-council/
 ├── agents.py              # 핵심 로직: 5개 전문가 에이전트 구현
 ├── expert_council.py      # 핵심 로직: 전문가 위원회 및 병렬 처리
+├── app.py                 # Streamlit 웹 애플리케이션
+├── run_app.py            # 웹 앱 실행 스크립트
 ├── requirements.txt       # Python 의존성
 ├── env.example           # 환경 변수 예시 파일
 ├── .env                  # 실제 API 키 (생성 필요)
@@ -51,7 +65,15 @@ analyst-council/
 
 ## 사용법
 
-### 대화형 분석 (권장)
+### 웹 애플리케이션 (권장)
+1. `python3 run_app.py` 실행
+2. 브라우저에서 `http://localhost:8501` 접속
+3. 사이드바에서 API 키 입력
+4. 종목 티커 입력 (예: AAPL, NVDA)
+5. "분석 시작" 버튼 클릭
+6. 실시간 분석 결과 확인
+
+### CLI 대화형 분석
 ```bash
 python3 expert_council.py
 ```
@@ -119,9 +141,11 @@ asyncio.run(analyze_stock())
 8. ✅ **실시간 주가 데이터 통합 (yfinance)**
 9. ✅ **자동 폴백 시스템 구현**
 10. ✅ **API 안정성 최적화 (Claude Haiku 과부하 해결)**
+11. ✅ **Streamlit 웹 애플리케이션 구현**
 
 ## 기술 스택
 - **Python 3.8+**
+- **Streamlit** (웹 애플리케이션 프레임워크)
 - **OpenAI API** (GPT-5)
 - **Anthropic API** (Claude Sonnet 4)
 - **Google Generative AI** (Gemini)
